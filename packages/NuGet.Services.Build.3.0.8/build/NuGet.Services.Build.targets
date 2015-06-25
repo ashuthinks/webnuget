@@ -1,0 +1,4 @@
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<!-- Import the build targets -->
+	<Import Project="$(NuGetBuildRoot)\NuGet.Services.Build.Core.targets" Condition="Exists('$(NuGetBuildRoot)\NuGet.Services.Build.Core.targets')" />
+</Project>

@@ -1,0 +1,1 @@
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\tests\NuGetGallery.FunctionalTests.Fluent\obj\Debug\NuGetGallery.FunctionalTests.Fluent.csprojResolveAssemblyReference.cache

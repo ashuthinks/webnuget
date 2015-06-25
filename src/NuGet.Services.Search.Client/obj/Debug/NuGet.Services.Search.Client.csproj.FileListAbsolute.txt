@@ -1,0 +1,15 @@
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\NuGet.Services.Search.Client.dll.config
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\NuGet.Services.Search.Client.dll
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\NuGet.Services.Search.Client.pdb
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\NuGet.Services.Platform.Client.dll
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\obj\Debug\NuGet.Services.Search.Client.dll
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\obj\Debug\NuGet.Services.Search.Client.pdb
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\src\NuGet.Services.Search.Client\obj\Debug\NuGet.Services.Search.Client.csprojResolveAssemblyReference.cache

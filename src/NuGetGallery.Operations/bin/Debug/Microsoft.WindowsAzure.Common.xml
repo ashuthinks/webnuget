@@ -1,0 +1,1174 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WindowsAzure.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WindowsAzure.SubscriptionCloudCredentials">
+            <summary>
+            Base class for credentials associated with a particular subscription.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.CloudCredentials">
+            <summary>
+            The CloudCredentials class is the base class for providing credentials
+            to access Windows Azure services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudCredentials.InitializeServiceClient``1(Microsoft.WindowsAzure.Common.ServiceClient{``0})">
+            <summary>
+            Initialize a ServiceClient instance to process credentials.
+            </summary>
+            <typeparam name="T">Type of ServiceClient.</typeparam>
+            <param name="client">The ServiceClient.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudCredentials.ProcessHttpRequestAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            Apply the credentials to the HTTP request.
+            </summary>
+            <param name="request">The HTTP request.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>
+            Task that will complete when processing has completed.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.SubscriptionCloudCredentials.SubscriptionId">
+            <summary>
+            When you create a Windows Azure subscription, it is uniquely
+            identified by a subscription ID. The subscription ID forms part of
+            the URI for every call that you make to the Service Management API.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.CloudHttpErrorInfo">
+            <summary>
+            Base class used to describe HTTP requests and responses associated with
+            error conditions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudHttpErrorInfo.#ctor">
+            <summary>
+            Initializes a new instance of the CloudHttpErrorInfo class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudHttpErrorInfo.CopyHeaders(System.Net.Http.Headers.HttpHeaders)">
+            <summary>
+            Add the HTTP message headers to the error info.
+            </summary>
+            <param name="headers">Collection of HTTP header.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudHttpErrorInfo.Content">
+            <summary>
+            Gets the contents of the HTTP message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudHttpErrorInfo.Headers">
+            <summary>
+            Gets the collection of HTTP headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudHttpErrorInfo.Version">
+            <summary>
+            Gets or sets the HTTP message version.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo">
+            <summary>
+            Describes HTTP requests associated with error conditions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo.#ctor">
+            <summary>
+            Initializes a new instance of the CloudHttpRequestErrorInfo class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo.Create(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Creates a new CloudHttpRequestErrorInfo from a HttpRequestMessage.
+            </summary>
+            <param name="request">The request message.</param>
+            <returns>A CloudHttpRequestErrorInfo instance.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo.Create(System.Net.Http.HttpRequestMessage,System.String)">
+            <summary>
+            Creates a new CloudHttpRequestErrorInfo from a HttpRequestMessage.
+            </summary>
+            <param name="request">The request message.</param>
+            <param name="content">
+            The request content, which may be passed separately if the request
+            has already been disposed.
+            </param>
+            <returns>A CloudHttpRequestErrorInfo instance.</returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo.Method">
+            <summary>
+            Gets the HTTP method used by the HTTP request message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo.RequestUri">
+            <summary>
+            Gets the Uri used for the HTTP request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo.Properties">
+            <summary>
+            Gets a set of properties for the HTTP request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.CloudHttpResponseErrorInfo">
+            <summary>
+            Describes HTTP responses associated with error conditions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudHttpResponseErrorInfo.#ctor">
+            <summary>
+            Initializes a new instance of the CloudHttpResponseErrorInfo class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudHttpResponseErrorInfo.Create(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Creates a new CloudHttpResponseErrorInfo from a HttpResponseMessage.
+            </summary>
+            <param name="response">The resposne message.</param>
+            <returns>A CloudHttpResponseErrorInfo instance.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudHttpResponseErrorInfo.Create(System.Net.Http.HttpResponseMessage,System.String)">
+            <summary>
+            Creates a new CloudHttpResponseErrorInfo from a HttpResponseMessage.
+            </summary>
+            <param name="response">The resposne message.</param>
+            <param name="content">
+            The response content, which may be passed separately if the
+            response has already been disposed.
+            </param>
+            <returns>A CloudHttpResponseErrorInfo instance.</returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudHttpResponseErrorInfo.StatusCode">
+            <summary>
+            Gets the status code of the HTTP response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudHttpResponseErrorInfo.ReasonPhrase">
+            <summary>
+            Gets the reason phrase which typically is sent by servers together
+            with the status code.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Internals.Cryptography">
+            <summary>
+            Provides cryptography functionality to libraries.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.Cryptography.ComputeHmacSha256Hash(System.Byte[],System.Byte[])">
+            <summary>
+            Computes a Hash-based Message Authentication Code (HMAC) 
+            by using the SHA256 hash function.
+            </summary>
+            <param name="key">The key to use in the hash algorithm.</param>
+            <param name="data">The input to compute the hash code
+            for.</param>
+            <returns>Returns the computed hash code.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Internals.HttpExtensions">
+            <summary>
+            Extensions for manipulating HTTP requests and responses.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AsString(System.Net.Http.HttpContent)">
+            <summary>
+            Get the HTTP message content as a string.
+            </summary>
+            <param name="content">The HTTP content.</param>
+            <returns>The HTTP message content as a string.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.GetContentHeaders(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Get the content headers for an HTTP request.
+            </summary>
+            <param name="request">The request message.</param>
+            <returns>The content headers.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.GetContentHeaders(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Get the content headers for an HTTP response.
+            </summary>
+            <param name="response">The response message.</param>
+            <returns>The content headers.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AsString(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Get a standard string representation of an HTTP request.
+            </summary>
+            <param name="request">The request message.</param>
+            <returns>String representation of the request.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AsString(Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo)">
+            <summary>
+            Get a standard string representation of an HTTP request.
+            </summary>
+            <param name="request">The request message.</param>
+            <returns>String representation of the request.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AppendHttpRequest(System.Text.StringBuilder,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Append an HTTP request.
+            </summary>
+            <param name="text">The StringBuilder.</param>
+            <param name="request">The request message.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AppendHttpRequest(System.Text.StringBuilder,Microsoft.WindowsAzure.Common.CloudHttpRequestErrorInfo)">
+            <summary>
+            Append an HTTP request.
+            </summary>
+            <param name="text">The StringBuilder.</param>
+            <param name="request">The request message.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AppendHttpRequest(System.Text.StringBuilder,System.Net.Http.HttpMethod,System.Uri,System.Version,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IEnumerable{System.String}}},System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IEnumerable{System.String}}},System.Collections.Generic.IDictionary{System.String,System.Object},System.String)">
+            <summary>
+            Append the components of an HTTP request.
+            </summary>
+            <param name="text">The StringBuilder.</param>
+            <param name="method">The request method.</param>
+            <param name="requestUri">The request URI.</param>
+            <param name="version">The request HTTP version.</param>
+            <param name="headers">The request headers.</param>
+            <param name="contentHeaders">The request content headers.</param>
+            <param name="properties">The request properties.</param>
+            <param name="content">The request content.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AsString(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Get a standard string representation of an HTTP response.
+            </summary>
+            <param name="response">The response message.</param>
+            <returns>String representation of the response.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AsString(Microsoft.WindowsAzure.Common.CloudHttpResponseErrorInfo)">
+            <summary>
+            Get a standard string representation of an HTTP response.
+            </summary>
+            <param name="response">The response message.</param>
+            <returns>String representation of the response.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AppendHttpResponse(System.Text.StringBuilder,System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Append an HTTP response.
+            </summary>
+            <param name="text">The StringBuilder.</param>
+            <param name="response">The response message.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AppendHttpResponse(System.Text.StringBuilder,Microsoft.WindowsAzure.Common.CloudHttpResponseErrorInfo)">
+            <summary>
+            Append an HTTP response.
+            </summary>
+            <param name="text">The StringBuilder.</param>
+            <param name="response">The response message.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AppendHttpResponse(System.Text.StringBuilder,System.Net.HttpStatusCode,System.String,System.Version,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IEnumerable{System.String}}},System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IEnumerable{System.String}}},System.String)">
+            <summary>
+            Append the components of an HTTP response.
+            </summary>
+            <param name="text">The StringBuilder.</param>
+            <param name="statusCode">The response status code.</param>
+            <param name="reasonPhrase">The response reason phrase.</param>
+            <param name="version">The response HTTP version.</param>
+            <param name="headers">The response headers.</param>
+            <param name="contentHeaders">The response content headers.</param>
+            <param name="content">The response content.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.HttpExtensions.AppendHttpHeaders(System.Text.StringBuilder,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.IEnumerable{System.String}}})">
+            <summary>
+            Append HTTP headers.
+            </summary>
+            <param name="text">The StringBuilder.</param>
+            <param name="headers">The HTTP headers.</param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Internals.TypeConversion">
+            <summary>
+            Static type conversion utility methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.TypeConversion.ToBase64String(System.String)">
+            <summary>
+            Converts an array of 8-bit unsigned integers to its  equivalent 
+            string representation that is encoded with base-64 digits.
+            </summary>
+            <param name="value">An array of 8-bit unsigned integers.</param>
+            <returns>The string representation, in base 64, of the contents of 
+            value.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.TypeConversion.BytesToString(System.Byte[])">
+            <summary>
+            Decodes all the bytes in the specified byte array into a string.
+            </summary>
+            <param name="value">The byte array containing the sequence of bytes 
+            to decode.</param>
+            <returns>A string that contains the results of decoding the 
+            specified sequence of bytes.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.TypeConversion.FromBase64String(System.String)">
+            <summary>
+            Converts the specified string, which encodes binary data as base-64
+            digits, to a UTF8-encoded string.
+            </summary>
+            <param name="value">The base 64-encoded string to convert.</param>
+            <returns>Returns a string.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.TypeConversion.TryParseUri(System.String)">
+            <summary>
+            Uses Uri::TryCreate method to safely attempt to parse a 
+            string value and return its Uri representation. Supports
+            relative Uris.
+            </summary>
+            <param name="value">The Uri string.</param>
+            <returns>Returns a new Uri instance or null.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.TypeConversion.To8601String(System.TimeSpan)">
+            <summary>
+            Convert a TimeSpan into an 8601 formatted string.
+            </summary>
+            <param name="timespan">The timespan to convert.</param>
+            <returns>The TimeSpan in 8601 format.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.TypeConversion.From8601TimeSpan(System.String)">
+            <summary>
+            Convert a string from ISO 8601 format to a TimeSpan instance.
+            </summary>
+            <param name="value">Value to parse</param>
+            <returns>The resulting timespan</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.OperationResponse">
+            <summary>
+            A standard service response including an HTTP status code and request
+            ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.OperationResponse.StatusCode">
+            <summary>
+            REST API operations for the Service Management API return standard
+            HTTP status codes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.OperationResponse.RequestId">
+            <summary>
+            A value that uniquely identifies a request made against the
+            service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Platform.ICloudCredentialsProvider">
+            <summary>
+            A cloud credentials provider.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Platform.ICloudCredentialsProvider.CreateCredentials(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a new credentials instance if the appropriate settings for
+            this provider are present and valid.
+            </summary>
+            <param name="settings">Dictionary of configuration settings.</param>
+            <returns>Returns a new instance if the provider supports the
+            provided settings.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.CloudTracing">
+            <summary>
+            Provides tracing utilities that insight into all aspects of client
+            operations via implementations of the ICloudTracingInterceptor
+            interface.  All tracing is global.
+            </summary>
+            <remarks>
+            The utilities in the internal Tracing class provide helpers for
+            notifying the active trace listeners of changes.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Common.CloudTracing._interceptors">
+            <summary>
+            The collection of tracing interceptors to notify.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Common.CloudTracing._threadSafeInterceptors">
+            <summary>
+            A read-only, thread-safe collection of tracing interceptors.  Since
+            List is only thread-safe for reads (and adding/removing tracing
+            interceptors isn't a very common operation), we simply replace the
+            entire collection of interceptors so any enumeration of the list
+            in progress on a different thread will not be affected by the
+            change.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Common.CloudTracing._lock">
+            <summary>
+            Lock used to synchronize mutation of the tracing interceptors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudTracing.#ctor">
+            <summary>
+            Initializes a new instance of the CloudTracing class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudTracing.AddTracingInterceptor(Microsoft.WindowsAzure.ICloudTracingInterceptor)">
+            <summary>
+            Add a tracing interceptor to be notified of changes.
+            </summary>
+            <param name="interceptor">The tracing interceptor.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudTracing.RemoveTracingInterceptor(Microsoft.WindowsAzure.ICloudTracingInterceptor)">
+            <summary>
+            Remove a tracing interceptor from change notifications.
+            </summary>
+            <param name="interceptor">The tracing interceptor.</param>
+            <returns>
+            True if the tracing interceptor was found and removed; false
+            otherwise.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudTracing.IsEnabled">
+            <summary>
+            Gets or sets a value indicating whether tracing is enabled.
+            Tracing can be disabled for performance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudTracing.TracingInterceptors">
+            <summary>
+            Gets a sequnce of the tracing interceptors to notify of changes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConfigurationHelper.GetCredentials``1(System.Collections.Generic.IDictionary{System.String,System.Object},System.Boolean)">
+            <summary>
+            Creates a new credentials instance of type T using the set of
+            registered cloud credentials providers and provided settings.
+            </summary>
+            <typeparam name="T">The requested minimum type of cloud credentials
+            for successful credential use.</typeparam>
+            <param name="settings">Dictionary of configuration settings.</param>
+            <param name="isRequired">Provides a value indicating whether to
+            throw if the minimum requested credentials type cannot be found.
+            Defaults to true.</param>
+            <returns>Returns a new instance of the first provider that supports
+            the provided settings.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.ServiceClient`1">
+            <summary>
+            The base ServiceClient class used to call REST services.
+            </summary>
+            <typeparam name="T">Type of the ServiceClient.</typeparam>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Common.ServiceClient`1._transportHandlerProvider">
+            <summary>
+            Gets the Platform's IHttpTransportHandlerProvider which gives the
+            default HttpHandler for sending web requests.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Common.ServiceClient`1._disposed">
+            <summary>
+            A value indicating whether or not the ServiceClient has already
+            been disposed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Common.ServiceClient`1._innerHandler">
+            <summary>
+            Reference to the delegated handler of our handler (so we can
+            maintain a proper reference count).
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Common.ServiceClient`1._handler">
+            <summary>
+            Reference to our HTTP handler (which is the start of our HTTP
+            pipeline).
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.ServiceClient`1.#cctor">
+            <summary>
+            Initialize the ServiceClient class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.ServiceClient`1.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceClient class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.ServiceClient`1.CreateHttpClient">
+            <summary>
+            Create the HTTP client.
+            </summary>
+            <returns>The HTTP client.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.ServiceClient`1.Dispose">
+            <summary>
+            Dispose the ServiceClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.ServiceClient`1.Clone(Microsoft.WindowsAzure.Common.ServiceClient{`0})">
+            <summary>
+            Clone the service client.
+            </summary>
+            <param name="client">The client to clone.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.ServiceClient`1.CloneHttpClient(System.Net.Http.HttpClient,System.Net.Http.HttpClient)">
+            <summary>
+            Clone HttpClient properties.
+            </summary>
+            <param name="source">The client to clone.</param>
+            <param name="destination">The client to copy into.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.ServiceClient`1.WithHandler(Microsoft.WindowsAzure.Common.ServiceClient{`0},System.Net.Http.DelegatingHandler)">
+            <summary>
+            Extend the ServiceClient with a new handler.
+            </summary>
+            <param name="newClient">The new client that will extend.</param>
+            <param name="handler">The handler to extend with.</param>
+            <returns>The extended client.</returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.ServiceClient`1.HttpClient">
+            <summary>
+            Gets the HttpClient used for making HTTP requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.ServiceClient`1.HttpMessageHandler">
+            <summary>
+            Gets a reference to our HTTP handler (which is the start of our
+            HTTP pipeline).
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.ServiceClient`1.UserAgent">
+            <summary>
+            Gets the UserAgent collection which can be augmented with custom
+            user agent strings.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.IServiceOperations`1">
+            <summary>
+            Interface used to represent resource groupings of ServiceClient 
+            operations.
+            </summary>
+            <typeparam name="TClient">Type of the ServiceClient.</typeparam>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.IServiceOperations`1.Client">
+            <summary>
+            Gets a reference to the ServiceClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.CloudClients">
+            <summary>
+            The CloudClients class provides a common location for service client
+            discovery.  It can be accessed via CloudContext.Clients.  The
+            Microsoft.WindowsAzure namespace should be imported when used because
+            CloudClients is intended to be the target of extension methods by each
+            service client.
+            </summary>
+            <remarks>
+            All service client libraries should add CreateXYZClient() extension
+            methods on static classes declared in the Microsoft.WindowsAzure
+            namespace.  This will allow any library loaded in a project to be
+            easily discovered via CloudContext.Clients without developers having to
+            figure out which namespaces to import, etc.  You may also add extension
+            methods that create 
+            
+            This class is used as a static class (internal .ctor) but not declared
+            as such so it can be the target of extension methods.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudClients.#ctor">
+            <summary>
+            Initializes a new instance of the CloudClients class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.CloudConfiguration">
+            <summary>
+            Utilities for easily retrieving configuration settings across a variety
+            of platform appropriate sources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.#cctor">
+            <summary>
+            Initializes platform-specific cloud configuration and credentials
+            providers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.RegisterCloudCredentialsProvider(Microsoft.WindowsAzure.Common.Platform.ICloudCredentialsProvider)">
+            <summary>
+            Registers a cloud credentials provider with the configuration
+            runtime.
+            </summary>
+            <param name="provider">Instance of a cloud credentials provider.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.CreateCloudCredentials``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a new credentials instance of type T using the set of
+            registered cloud credentials providers.
+            </summary>
+            <typeparam name="T">The requested minimum type of cloud credentials
+            for successful credential use.</typeparam>
+            <param name="settings">Dictionary of configuration settings.</param>
+            <returns>Returns a new instance of the first provider that supports
+            the provided settings.</returns>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Common.CloudConfiguration._configurationProvider">
+            <summary>
+            A platform specific configuration provider.  There is no standard
+            configuration support in the Portable Class Libraries BCL.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the CloudConfiguration class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.GetSetting(System.String)">
+            <summary>
+            Get the value of a configuration setting from a platform specific
+            configuration source.
+            </summary>
+            <param name="name">The name of the setting.</param>
+            <returns>The value of the setting, or null if not found.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.GetConnectionInfo``1">
+            <summary>
+            Get connection info that can be used to instantiate type T by
+            searching for configuration settings of the form
+            Namespace.Type.format.  If no connection info is found for the
+            type, we will search for connection info for all of its base types.
+            </summary>
+            <typeparam name="T">
+            The type to obtain connection info for.
+            </typeparam>
+            <returns>
+            Connection info used to instantiate the given type or null if no
+            connection info is found.
+            </returns>
+            <remarks>
+            You can get insight into the connection info search by checking
+            the tracing output.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.GetConnectionInfo``1(System.String)">
+            <summary>
+            Get named connection info that can be used to instantiate a type by
+            searching for configuration settings of the format
+            Namespace.Type.Name.format.  If no connection info is found for the
+            type, we will search for connection info for all of its base types.
+            </summary>
+            <typeparam name="T">
+            The type to obtain connection info for.
+            </typeparam>
+            <param name="name">The name of the connection info.</param>
+            <returns>
+            Connection info used to instantiate the given type or null if no
+            connection info is found.
+            </returns>
+            <remarks>
+            You can get insight into the connection info search by checking
+            the tracing output.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.GetConnectionInfo(System.Type)">
+            <summary>
+            Get connection info that can be used to instantiate a type by
+            searching for configuration settings of the form
+            Namespace.Type.format.  If no connection info is found for the
+            type, we will search for connection info for all of its base types.
+            </summary>
+            <param name="type">
+            The type to obtain connection info for.
+            </param>
+            <returns>
+            Connection info used to instantiate the given type or null if no
+            connection info is found.
+            </returns>
+            <remarks>
+            You can get insight into the connection info search by checking
+            the tracing output.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.GetConnectionInfo(System.Type,System.String)">
+            <summary>
+            Get named connection info that can be used to instantiate a type by
+            searching for configuration settings of the format
+            Namespace.Type.Name.format.  If no connection info is found for
+            the type, we will search for connection info for all of its base
+            types.
+            </summary>
+            <param name="type">
+            The type to obtain connection info for.
+            </param>
+            <param name="name">The name of the connection info.</param>
+            <returns>
+            Connection info used to instantiate the given type or null if
+            no connection string is found.
+            </returns>
+            <remarks>
+            You can get insight into the connection info search by checking
+            the tracing output.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.ProbeForConnectionInfo(System.Type,System.String,System.String@,System.String@)">
+            <summary>
+            Get connection info that can be used to instantiate a type by
+            searching for configuration settings of the format
+            Namespace.Type[.Name].format  If no settings are found for the
+            type, we will search for connection info for all of its base types.
+            </summary>
+            <param name="type">
+            The type to obtain connection info for.
+            </param>
+            <param name="name">Optional value for named settings.</param>
+            <param name="settingsName">
+            Name of the config setting item where the setting was found.
+            </param>
+            <param name="settingsValue">
+            Value of the config setting item where the setting was found.
+            </param>
+            <returns>
+            Connection info used to instantiate the given type or null if
+            no connection info is found.
+            </returns>
+            <remarks>
+            You can get insight into the connection info search by checking
+            the tracing output.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.ParseConnectionStringSettings(System.String)">
+            <summary>
+            Parse a connection string.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <returns>
+            A dictionary of the setting names and values from the connection
+            string.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.CloudConfiguration.ParseJsonSettings(System.String)">
+            <summary>
+            Parse a JSON settings file.
+            </summary>
+            <param name="settings">The JSON settings.</param>
+            <returns>
+            A dictionary of the setting names and values from the JSON
+            settings.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudConfiguration.ConfigurationProvider">
+            <summary>
+            Gets a platform specific configuration provider.  There is no
+            standard configuration support in the Portable Class Libraries BCL.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.CloudConfiguration.Tracing">
+            <summary>
+            Gets the tracing utilities used to provide insight into all aspects
+            of client operations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.CloudContext">
+            <summary>
+            The CloudContext class is your primary entry point for getting started
+            with Windows Azure client libraries.  CloudContext.Clients contains
+            helpful methods to create any of the clients currently referenced in
+            your project (be sure to import the Microsoft.WindowsAzure namespace so
+            you import its extension methods).  CloudContext.Configuration allows
+            you to easily retrieve configuration settings across a variety of 
+            platform appropriate sources.
+            </summary>
+            <remarks>
+            The CloudContext class is static to make it easier to use, but all
+            other classes should be instances so they can be targeted by extension
+            methods given the layered approach of our client libraries.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudContext.#cctor">
+            <summary>
+            Initializes the CloudContext static class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.CloudContext.Clients">
+            <summary>
+            Gets an object providing a common location for service client
+            discovery.  The Microsoft.WindowsAzure namespace should be imported
+            when used because CloudClients is intended to be the target of
+            extension methods by each service client library.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.CloudContext.Configuration">
+            <summary>
+            Gets utilities for easily retrieving configuration settings across
+            a variety of platform appropriate sources.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser">
+             <summary>
+             Parse connection strings.
+             </summary>
+             <remarks>
+             The following simplified grammar was obtained from the specification
+             "[MS-OLEDBSTR]: OLEDB Connection String Structure".  Refer to the spec
+             for full details.  We support case-insensitive keys and multiple
+             occurrences of the same key, but not multiple values for keys (i.e.,
+             the CompoundValue nonterminal in the spec's grammar).
+             
+             
+             ws :=           [ \t]*
+             semi :=         ;
+             eq :=           =
+             esc-eq :=       ==
+             dq :=           "
+             sq :=           '
+             esc-dq :=       ""
+             esc-sq :=       ''
+             key-start:      (==)|[^ \t;]
+             key-body:       (==)[^;]*
+             key-end:        (==)|[^ \t;]
+             lit-start:      [^ \t'";=]
+             lit-body:       [^;]
+             lit-end:        [^ \t;]
+             sq-lit:         ''|[^']
+             dq-lit:         ""|[^"]
+             
+             ConnectionString :=
+                 (ConnectionStringClause semi)* (ConnectionStringClause semi?)?
+               
+             ConnectionStringClause :=
+                 KeyValuePair | ws
+                 
+             KeyValuePair :=
+                 ws Key ws eq ws Value ws
+                 
+             Key :=
+                 key-start (key-body* key-end)?
+                 
+             Value :=
+                 (lit-start (lit-body* lit-end)?)?
+                 | sq sq-lit* sq
+                 | dq dq-lit* dq    
+            
+             </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.Parse(System.String)">
+            <summary>
+            Parses the connection string into a collection of key/value pairs.
+            </summary>
+            <param name="connectionString">Connection string.</param>
+            <returns>Parsed connection string.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.#ctor(System.String)">
+            <summary>
+            Initializes the object.
+            </summary>
+            <param name="value">Value to parse.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.Parse">
+            <summary>
+            Parses the string.
+            </summary>
+            <returns>A collection of key=value pairs.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.CreateException(System.Int32,System.String,System.Object[])">
+            <summary>
+            Generates an invalid connection string exception with the detailed 
+            error message.
+            </summary>
+            <param name="position">Position of the error.</param>
+            <param name="errorString">Short error formatting string.</param>
+            <param name="args">Optional arguments for the error string.</param>
+            <returns>Exception with the requested message.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.SkipWhitespaces">
+            <summary>
+            Skips whitespaces at the current position.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.ExtractKey">
+            <summary>
+            Extracts key at the current position.
+            </summary>
+            <returns>Key.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.ExtractString(System.Char)">
+            <summary>
+            Extracts the string until the given quotation mark.
+            </summary>
+            <param name="quote">Quotation mark terminating the string.</param>
+            <returns>String.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.SkipOperator(System.Char)">
+            <summary>
+            Skips specified operator.
+            </summary>
+            <param name="operatorChar">Operator character.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.ExtractValue">
+            <summary>
+            Extracts key's value.
+            </summary>
+            <returns>Key's value.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Internals.ConnectionStringParser.ParserState">
+            <summary>
+            State of the parser.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Platform.ICloudConfigurationProvider">
+            <summary>
+            Platform-specific interface enabling cloud configuration support.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Platform.ICloudConfigurationProvider.RegisterDefaultCloudCredentialsProviders">
+            <summary>
+            Registers platform-specific cloud configuration providers with the
+            common runtime.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.CloudException">
+            <summary>
+            Exception thrown for any invalid response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CloudException class.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the CloudException class.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="innerException">Inner exception.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudException.ToString">
+            <summary>
+            Convert the CloudException into a helpful string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudException.CreateFromXml(System.Net.Http.HttpRequestMessage,System.String,System.Net.Http.HttpResponseMessage,System.String,System.Exception)">
+            <summary>
+            Create a CloudException from a failed response sending XML content.
+            </summary>
+            <param name="request">The HTTP request.</param>
+            <param name="requestContent">The HTTP request content.</param>
+            <param name="response">The HTTP response.</param>
+            <param name="responseContent">The HTTP response content.</param>
+            <param name="innerException">Optional inner exception.</param>
+            <returns>A CloudException representing the failure.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudException.CreateFromJson(System.Net.Http.HttpRequestMessage,System.String,System.Net.Http.HttpResponseMessage,System.String,System.Exception)">
+            <summary>
+            Create a CloudException from a failed response sending JSON content.
+            </summary>
+            <param name="request">The HTTP request.</param>
+            <param name="requestContent">The HTTP request content.</param>
+            <param name="response">The HTTP response.</param>
+            <param name="responseContent">The HTTP response content.</param>
+            <param name="innerException">Optional inner exception.</param>
+            <returns>A CloudException representing the failure.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudException.Create(System.Net.Http.HttpRequestMessage,System.String,System.Net.Http.HttpResponseMessage,System.String,System.Exception,System.Func{System.String,System.Tuple{System.String,System.String}})">
+            <summary>
+            Create a CloudException from a failed response.
+            </summary>
+            <param name="request">The HTTP request.</param>
+            <param name="requestContent">The HTTP request content.</param>
+            <param name="response">The HTTP response.</param>
+            <param name="responseContent">The HTTP response content.</param>
+            <param name="innerException">Optional inner exception.</param>
+            <param name="parseError">
+            Function to parse the response content and return the error code
+            and error message as a Tuple.
+            </param>
+            <returns>A CloudException representing the failure.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudException.ParseXmlError(System.String)">
+            <summary>
+            Parse the response content as an XML error message.
+            </summary>
+            <param name="content">The response content.</param>
+            <returns>
+            A tuple containing the parsed error code and message.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.CloudException.ParseJsonError(System.String)">
+            <summary>
+            Parse the response content as an JSON error message.
+            </summary>
+            <param name="content">The response content.</param>
+            <returns>
+            A tuple containing the parsed error code and message.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.CloudException.ErrorMessage">
+            <summary>
+            Gets the error message returned from the server.
+            </summary>
+            <remarks>
+            This is included by default in the Message property.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.CloudException.ErrorCode">
+            <summary>
+            Gets the error code returned from the server.
+            </summary>
+            <remarks>
+            This is included by default in the Message property.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.CloudException.Request">
+            <summary>
+            Gets information about the associated HTTP request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.CloudException.Response">
+            <summary>
+            Gets information about the associated HTTP response.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Internals.CloudExtensions">
+            <summary>
+            Internal extensions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.CloudExtensions.CreateArgumentEmptyException(System.String)">
+            <summary>
+            Create an ArgumentException for empty parameters.
+            </summary>
+            <param name="parameterName">The parameter name.</param>
+            <returns>The ArgumentException.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.CloudExtensions.GetAssemblyVersion``1(Microsoft.WindowsAzure.Common.ServiceClient{``0})">
+            <summary>
+            Get the assembly version of a service client.
+            </summary>
+            <typeparam name="T">Type of the service client.</typeparam>
+            <param name="client">The service client.</param>
+            <returns>The assembly version of the client.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.CloudExtensions.GetHttpPipeline(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Get the HTTP pipeline formed from the ancestors of the starting
+            handler.
+            </summary>
+            <param name="handler">The starting handler.</param>
+            <returns>The HTTP pipeline.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.CloudExtensions.GetHttpPipeline``1(Microsoft.WindowsAzure.Common.ServiceClient{``0})">
+            <summary>
+            Get the HTTP pipeline for the given service client.
+            </summary>
+            <typeparam name="T">Type of the service client.</typeparam>
+            <param name="client">The service client.</param>
+            <returns>The client's HTTP pipeline.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Common.Internals.CloudExtensions.AddHandlerToPipeline``1(Microsoft.WindowsAzure.Common.ServiceClient{``0},System.Net.Http.DelegatingHandler)">
+            <summary>
+            Add a handler to the end of the client's HTTP pipeline.
+            </summary>
+            <typeparam name="T">Type of the service client.</typeparam>
+            <param name="client">The service client.</param>
+            <param name="handler">The handler to add.</param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.ICloudTracingInterceptor">
+            <summary>
+            The ICloudTracingInterceptor provides useful information about cloud
+            operations.  Interception is global and a tracing interceptor can be
+            added via CloudContext.Configuration.Tracing.AddTracingInterceptor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.ICloudTracingInterceptor.Information(System.String)">
+            <summary>
+            Trace information.
+            </summary>
+            <param name="message">The information to trace.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.ICloudTracingInterceptor.Configuration(System.String,System.String,System.String)">
+            <summary>
+            Probe configuration for the value of a setting.
+            </summary>
+            <param name="source">The configuration source.</param>
+            <param name="name">The name of the setting.</param>
+            <param name="value">The value of the setting in the source.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.ICloudTracingInterceptor.Enter(System.String,System.Object,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Enter a method.
+            </summary>
+            <param name="invocationId">Method invocation identifier.</param>
+            <param name="instance">The instance with the method.</param>
+            <param name="method">Name of the method.</param>
+            <param name="parameters">Method parameters.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.ICloudTracingInterceptor.SendRequest(System.String,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Send an HTTP request.
+            </summary>
+            <param name="invocationId">Method invocation identifier.</param>
+            <param name="request">The request about to be sent.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.ICloudTracingInterceptor.ReceiveResponse(System.String,System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Receive an HTTP reponse.
+            </summary>
+            <param name="invocationId">Method invocation identifier.</param>
+            <param name="response">The response instance.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.ICloudTracingInterceptor.Error(System.String,System.Exception)">
+            <summary>
+            Raise an error.
+            </summary>
+            <param name="invocationId">Method invocation identifier.</param>
+            <param name="ex">The error.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.ICloudTracingInterceptor.Exit(System.String,System.Object)">
+            <summary>
+            Exit a method.  Note: Exit will not be called in the event of an
+            error.
+            </summary>
+            <param name="invocationId">Method invocation identifier.</param>
+            <param name="returnValue">Method return value.</param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Common.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.Properties.Resources.ArgumentCannotBeEmpty">
+             <summary>
+               Looks up a localized string similar to Value cannot be empty.
+            Parameter name: {0}.
+             </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.Properties.Resources.ConfigurationHelper_CreateCouldNotConvertException">
+            <summary>
+              Looks up a localized string similar to Failed to convert parameter {0} value &apos;{1}&apos; to type {2}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.Properties.Resources.ConfigurationHelper_CreateFromSettings_CreateSettingsFailedException">
+            <summary>
+              Looks up a localized string similar to {3}  Failed to create {0} from connection settings {1} = &quot;{2}&quot;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.Properties.Resources.ConfigurationHelper_CreateFromSettings_NoConnectionSettingsFound">
+            <summary>
+              Looks up a localized string similar to No connection settings found for type {0}.  Enable tracing for more information..
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.Properties.Resources.ConfigurationHelper_GetCredentials_NotFound">
+            <summary>
+              Looks up a localized string similar to No credentials of type &apos;{0}&apos; could be initialized from the provided settings..
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Common.Properties.Resources.ConfigurationHelper_GetParameter_NotFound">
+            <summary>
+              Looks up a localized string similar to Parameter {0} is required..
+            </summary>
+        </member>
+    </members>
+</doc>

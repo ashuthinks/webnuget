@@ -1,0 +1,1 @@
+C:\Users\fugatash\Documents\GitHub\NuGetGallery\tests\NuGetGallery.FunctionalTests.Helpers\obj\Debug\NuGetGallery.FunctionalTests.Helpers.csprojResolveAssemblyReference.cache

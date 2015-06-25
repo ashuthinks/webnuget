@@ -1,0 +1,52 @@
+﻿@model PackageListViewModel
+@{
+    ViewBag.Title = String.IsNullOrWhiteSpace(Model.SearchTerm) ? "Packages" : "Packages matching " + Model.SearchTerm;
+    ViewBag.SortText = String.IsNullOrWhiteSpace(Model.SearchTerm) ? "recent installs" : "relevance";
+    ViewBag.Tab = "Packages";
+}
+
+<div class="search">
+    @if (!String.IsNullOrEmpty(Model.SearchTerm))
+    {
+        <h1>Search for <i>@Model.SearchTerm</i> returned @Model.TotalCount @if (Model.TotalCount == 1)
+                                                                      {
+                                                                          <text>package</text>
+                                                                      }
+                                                                      else
+                                                                      {
+                                                                          <text>packages</text>
+                                                                      }</h1>
+    }
+    else
+    {
+        <h1>@if (Model.TotalCount == 1)
+            {
+                <text>There is @Model.TotalCount package</text>
+            }
+            else
+            {
+                <text>There are @Model.TotalCount packages</text>
+            }</h1>
+    }
+    <span class="sorted-by">Sorted by @ViewBag.SortText</span>
+    @if (Model.LastResultIndex > 0)
+    {
+        <h2>Displaying results @Model.FirstResultIndex - @Model.LastResultIndex.</h2>
+    }
+    @if(Model.IndexTimestampUtc.HasValue)
+    {
+        <p class="package-list-lastupdated" title="The time the Search Index was last modified to incorporate new packages.">Search Index last updated <time class="timeago" datetime="@Model.IndexTimestampUtc.Value.ToJavaScriptUTC()">@Model.IndexTimestampUtc.Value.ToNuGetShortDateTimeString() UTC</time></p>
+    }
+</div>
+
+<ul id="searchResults">
+    @foreach (var package in Model.Items)
+    {
+        <li>
+            @Html.Partial("_ListPackage", package)
+        </li>
+    }
+</ul>
+
+
+@ViewHelpers.PreviousNextPager(Model.Pager)
